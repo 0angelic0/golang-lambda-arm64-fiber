@@ -1,0 +1,61 @@
+get:
+  summary: Returns all roles
+  description: |
+    Returns all roles from the system that the user has access to
+  operationId: findRoles
+  parameters:
+    - name: limit
+      in: query
+      description: maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        format: int32
+    - name: tags
+      in: query
+      description: tags to filter by
+      required: false
+      style: form
+      schema:
+        type: array
+        items:
+          type: string
+  responses:
+    "200":
+      description: role response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "schemas.yml#/Role"
+    default:
+      description: unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yml#/Error"
+post:
+  summary: Creates a new role
+  description: Creates a new role in the system.
+  operationId: createRole
+  requestBody:
+    description: Role to add to the system
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "schemas.yml#/NewRole"
+  responses:
+    "200":
+      description: role response
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yml#/Role"
+    default:
+      description: unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yml#/Error"

@@ -1,0 +1,19 @@
+role:
+  handler: bootstrap
+  package:
+    artifact: bin/role/bootstrap.zip
+  events:
+    - http:
+        path: /role
+        method: ANY
+        cors: true
+    - http:
+        path: /role/{any+}
+        method: ANY
+        cors: true
+  environment:
+    MYSQL_HOST: ${file(./environment/${self:provider.stage}.yml):ENV_MYSQL_HOST}
+    MYSQL_PORT: ${file(./environment/${self:provider.stage}.yml):ENV_MYSQL_PORT}
+    MYSQL_USERNAME: ${file(./environment/${self:provider.stage}.yml):ENV_MYSQL_USERNAME}
+    MYSQL_PASSWORD: ${file(./environment/${self:provider.stage}.yml):ENV_MYSQL_PASSWORD}
+    MYSQL_DATABASE: ${file(./environment/${self:provider.stage}.yml):ENV_MYSQL_DATABASE}

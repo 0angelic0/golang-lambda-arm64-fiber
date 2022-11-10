@@ -1,0 +1,24 @@
+User:
+  allOf:
+    - $ref: "#/NewUser"
+    - required:
+        - id
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: Unique id of the user
+
+NewUser:
+  required:
+    - name
+  properties:
+    name:
+      type: string
+      description: Name of the user
+    tag:
+      type: string
+      description: Type of the user
+
+Error:
+  $ref: "../shared/schemas/error.yml"

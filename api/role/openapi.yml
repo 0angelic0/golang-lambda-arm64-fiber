@@ -1,0 +1,23 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Role Service
+  description: A role service api
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Kungking
+    email: kungking.cpre@gmail.com
+    url: localhost
+  license:
+    name: UNLICENSED
+servers:
+  - url: http://localhost:3000
+paths:
+  /roles:
+    $ref: "paths.roles.yml"
+  /roles/{id}:
+    $ref: "paths.roles@{id}.yml"
+
+components:
+  schemas:
+    $ref: "schemas.yml"

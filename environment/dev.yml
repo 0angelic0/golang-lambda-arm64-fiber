@@ -1,0 +1,10 @@
+env: dev
+
+iamrole: arn:aws:iam::341509711817:role/demo-serverless-lambda-role
+deploymentBucket: demo-serverless-lambda-bucket
+
+ENV_MYSQL_HOST: xx
+ENV_MYSQL_PORT: 3306
+ENV_MYSQL_USERNAME: xx
+ENV_MYSQL_PASSWORD: xx
+ENV_MYSQL_DATABASE: xx

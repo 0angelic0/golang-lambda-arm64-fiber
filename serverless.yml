@@ -1,0 +1,29 @@
+service: demo
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: provided.al2
+  architecture: arm64
+  lambdaHashingVersion: 20201221
+  stage: ${opt:stage, 'dev'}
+  region: ap-southeast-1
+  logRetentionInDays: 7
+  deploymentBucket:
+    name: ${file(./environment/${self:provider.stage}.yml):deploymentBucket}
+    serverSideEncryption: AES256
+  versionFunctions: false
+  environment:
+    APP_ENV: ${file(./environment/${self:provider.stage}.yml):env}
+
+package:
+  individually: true
+
+functions:
+  - ${file(./services/user/serverless.yml)}
+  - ${file(./services/role/serverless.yml)}
+
+resources:
+  Outputs:
+    NewOutput:
+      Value: ${self:service}-${self:provider.stage}

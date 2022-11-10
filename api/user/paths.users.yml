@@ -1,0 +1,61 @@
+get:
+  summary: Returns all users
+  description: |
+    Returns all users from the system that the user has access to
+  operationId: findUsers
+  parameters:
+    - name: limit
+      in: query
+      description: maximum number of results to return
+      required: false
+      schema:
+        type: integer
+        format: int32
+    - name: tags
+      in: query
+      description: tags to filter by
+      required: false
+      style: form
+      schema:
+        type: array
+        items:
+          type: string
+  responses:
+    "200":
+      description: user response
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "schemas.yml#/User"
+    default:
+      description: unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yml#/Error"
+post:
+  summary: Creates a new user
+  description: Creates a new user in the system.
+  operationId: createUser
+  requestBody:
+    description: User to add to the system
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: "schemas.yml#/NewUser"
+  responses:
+    "200":
+      description: user response
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yml#/User"
+    default:
+      description: unexpected error
+      content:
+        application/json:
+          schema:
+            $ref: "schemas.yml#/Error"
