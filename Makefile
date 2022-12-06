@@ -45,9 +45,9 @@ build:
 	export GO111MODULE=on
 	go mod tidy
 	GOARCH=arm64 GOOS=linux CGO_ENABLED=0 go build -ldflags="-s -w" -tags lambda.norpc -o bin/user/bootstrap services/user/main.go
-	ditto -c -k --sequesterRsrc bin/user/bootstrap bin/user/bootstrap.zip
+	ditto -c -k --sequesterRsrc bin/user/bootstrap bin/user/bootstrap_user.zip
 	GOARCH=arm64 GOOS=linux CGO_ENABLED=0 go build -ldflags="-s -w" -tags lambda.norpc -o bin/role/bootstrap services/role/main.go
-	ditto -c -k --sequesterRsrc bin/role/bootstrap bin/role/bootstrap.zip
+	ditto -c -k --sequesterRsrc bin/role/bootstrap bin/role/bootstrap_role.zip
 
 .PHONY: deploy-dev
 deploy-dev:

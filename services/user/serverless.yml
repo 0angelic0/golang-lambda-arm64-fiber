@@ -1,7 +1,7 @@
 user:
   handler: bootstrap
   package:
-    artifact: bin/user/bootstrap.zip
+    artifact: bin/user/bootstrap_user.zip
   events:
     - http:
         path: /user

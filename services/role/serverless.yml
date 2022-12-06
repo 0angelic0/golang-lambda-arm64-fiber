@@ -1,7 +1,7 @@
 role:
   handler: bootstrap
   package:
-    artifact: bin/role/bootstrap.zip
+    artifact: bin/role/bootstrap_role.zip
   events:
     - http:
         path: /role
